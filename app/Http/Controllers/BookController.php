@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return Book::get();
+        return BookResource::collection(Book::get());
     }
 
     /**
@@ -46,7 +47,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return $book;
+        return new BookResource($book);
     }
 
     /**

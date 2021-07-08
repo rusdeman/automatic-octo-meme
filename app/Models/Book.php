@@ -9,7 +9,7 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $with = ['author', 'coAuthors'];
+//    protected $with = ['author', 'coAuthors'];
 
     public function author()
     {
