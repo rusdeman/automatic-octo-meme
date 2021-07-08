@@ -18,10 +18,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 //         User::factory(10)->create();
-        Book::factory()
-            ->count(9)
-            ->for(Author::factory())
-            ->hasAttached(CoAuthor::factory()->count(3))
+        $author = Author::factory()
+            ->create();
+
+        $book = Book::factory(9)
+            ->for($author)
+            ->create();
+
+        CoAuthor::factory(3)
+            ->hasAttached($book)
             ->create();
     }
 }
